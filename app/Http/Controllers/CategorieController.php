@@ -15,7 +15,7 @@ class CategorieController extends Controller
     public function index()
     {
         try{
-            return Categorie::select('id', 'name', 'parent_id')->get() ;
+            return Categorie::select('id', 'name', 'parent_id', 'categorie_icon_url')->get() ;
         }catch(Exception $e){
             return response()->json([
                 'message' => 'Getting Categories Failed',
@@ -32,7 +32,8 @@ class CategorieController extends Controller
         try{
             $request->validate([
                 'name' =>'required',
-                'parent_id' => 'nullable|integer'
+                'parent_id' => 'nullable|integer',
+                'categorie_icon_url' => 'sometimes|url'
             ]);
             $categorie = Categorie::create($request->all());
             return response()->json([
@@ -57,7 +58,8 @@ class CategorieController extends Controller
             $validated = $request->validate([
                 'id' =>'required|integer',
                 'name' => 'sometimes|string|max:255',
-                'parent_id' => 'sometimes|exists:categories,id'
+                'parent_id' => 'sometimes|exists:categories,id',
+                'categorie_icon_url' => 'sometimes|url|max:500'
             ]);
             $category = Categorie::find($validated['id']);
             

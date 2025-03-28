@@ -195,7 +195,8 @@ class AuthenticatConroller extends Controller
                 'card_Number' => 'required|string',
                 'date_expires_card' => 'required|string',	
                 'card_holder_name' => 'required|string',
-                'residential_address' => 'required|string'
+                'residential_address' => 'required|string',
+                'role' => 'required|in:buyer,seller,admin'
             ]);
 
             

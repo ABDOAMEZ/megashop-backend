@@ -13,6 +13,7 @@ class Categorie extends Model
         'id',
         'name',
         'parent_id',
+        'categorie_icon_url'
     ];
 
     protected $table = 'categories';

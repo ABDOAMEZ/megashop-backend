@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('parent_id')->nullable()->constrained('categories')->onDelete('set null');
+            $table->string('categorie_icon_url', 500);
             $table->timestamps();
         });
     }
